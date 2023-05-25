@@ -49,7 +49,22 @@ export default function Home() {
         loss += Math.abs(x - i / denominator);
       });
 
-      let maxLoss = (numerator - 1) / 2 + (denominator - 1) / 2; // maximum possible loss
+      let maxLoss =
+        numerator < denominator
+          ? (numerator + 1) / 2 + (denominator - 1) / 2
+          : (numerator - 1) / 2 + (denominator + 1) / 2; // maximum possible loss
+
+      //
+      // x -- | --ox 1/n
+      // x -- | -- | --ox 1/n + 2/n
+      //
+      //
+      //
+      // triangle(n-1)/n = (n-1)/2
+      //
+      //
+      //
+
       let accuracy = 1 - loss / maxLoss;
 
       const scoreUnlinearised =
